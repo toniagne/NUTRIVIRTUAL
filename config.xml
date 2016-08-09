@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>NutriVirtual</name>
     <description>
-        An Ionic Framework and Cordova project.
+        Aplicativo de apoio NutriVirtual
     </description>
     <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+      Por: Toni Agne
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -18,6 +18,7 @@
     <!-- Ionic supports Android Jellybean and up --> 
     <preference name="android-minSdkVersion" value="16" />
 
+<icon src="wwww/img/icon.png" />
     <!-- Don't store local data in an iCloud backup. Turn this to "cloud" to enable storage 
          to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
     -->
