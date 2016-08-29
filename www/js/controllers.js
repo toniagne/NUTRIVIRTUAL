@@ -17,6 +17,7 @@ angular.module('starter.controllers', [])
                     data    : $scope.formData,  //param method from jQuery //set the headers so angular passing info as form data (not request payload)
                 }).success(function(data){
                       $ionicLoading.hide();  
+                      $location.path( "/tab/areatrabalho" );
                     
                 }).error(function(data){ 
                    
