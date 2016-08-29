@@ -1,0 +1,49 @@
+<ion-view >
+  <ion-content class="padding">
+     <Br><Br><Br>
+     <img src="img/logo.png" width="80%">
+    <Br><Br><Br>
+      <div class="list" style="padding: 20px;">
+
+         <form method="post" ng-submit="submit(contactform, formData)" name="contactform" role="form">
+
+          <label class="item item-input" >
+            <i class="ion-person-stalker placeholder-icon"></i>
+            <input type="text" ng-model="formData.usuario" placeholder="USUÁRIO">
+          </label>
+
+          <label class="item item-input" >
+            <i class="ion-key placeholder-icon"></i>
+            <input type="text" ng-model="formData.senha" placeholder="SENHA">
+          </label>
+
+          <button type="submit" class="button button-block button-positive">LOGAR-SE</button>
+           
+      </div>
+      <!--
+        <div class="row">
+          <div class="col"><a href="#"><img src="img/ic_face.png" width="80%"></a></div>
+          <div class="col"><a href="#"><img src="img/ic_twitter.png" width="80%"></a></div>
+          <div class="col"><a href="#"><img src="img/ic_google.png" width="80%"></a></div> 
+        </div>
+        -->
+  
+
+  </ion-content>
+</ion-view>
+<div class="bar bar-footer">
+   <div class="row">
+    <div class="col" style="text-align: left;">
+      <a href="#/tab/dash/cadastrarse" class="button button-light icon-left button-positive  button-clear">
+        <i class="ion-android-open"></i> Cadastrar-se
+      </a>
+    </div>
+   <div class="col" style="text-align: right;">
+      <a href="#/tab/dash/ajuda" class="button button-light icon-right button-positive  button-clear">
+         Ajuda <i class="ion-help-buoy"></i>
+      </a>
+    </div>
+  </div>
+ 
+
+</div>
