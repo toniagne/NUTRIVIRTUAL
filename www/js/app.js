@@ -27,6 +27,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
 ])
 
+.config(['$cookiesProvider', function($cookiesProvider) {
+    $cookiesProvider.defaults = {
+      path: '/'
+    };
+  }])
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -86,7 +92,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-area-trabalho': {
         templateUrl: 'templates/area-trabalho.html',
-        controller: 'AreaTrabalho'
+        controller: 'DashCtrl'
       }
     }
   })

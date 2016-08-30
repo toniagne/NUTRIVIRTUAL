@@ -1,7 +1,7 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCookies'])
 
-.controller('DashCtrl', function($scope, $http, $ionicPopup, $ionicLoading, $location) {
-
+.controller('DashCtrl',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
+ $scope.dadosUser = $cookieStore.get('dadosUser');
  $scope.submit = function(contactform, formData) {
   $ionicLoading.show({
             content: 'Carregando USUÁRIO',
@@ -10,29 +10,44 @@ angular.module('starter.controllers', [])
             maxWidth: 200,
             showDelay: 0
           });
-            $http ({
-                    method  : 'POST',
-                    dataType: 'jsonp',
-                    url     : 'http://www.nutrivirtual.com.br/app/login/'+formData['usuario']+'/'+formData['senha'],
-                    data    : $scope.formData,  //param method from jQuery //set the headers so angular passing info as form data (not request payload)
-                }).success(function(data){
-                      $ionicLoading.hide();  
-                      $location.path( "/tab/areatrabalho" );
-                    
-                }).error(function(data){ 
-                   
-                  $ionicLoading.hide(); 
-                  $location.path( "/tab/areatrabalho" );
-                });
+
+  var url = 'http://www.nutrivirtual.com.br/app/login/?callback=JSON_CALLBACK&user='+formData['usuario']+'&pass='+formData['senha'];
+  
+ $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'SUA SENHA OU LOGIN NÃO ESTAO CORRETOS, CONFIRA E TENTE NOVAMENTE'
+                         });
+                      } else {   
+                         $cookieStore.put('dadosUser', data);
+                        $state.go('tab.area-trabalho');
+                      }
 
 
- }
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'Seu dispositivo não esta conectado na internet.'
+                     });
 
+                  });
+            
+    
 
+ 
+
+ } 
+
+ 
 })
 
-.controller('AreaTrabalho', function($scope) {
+.controller('AreaTrabalho', function($scope, $cookieStore) {
+  $scope.dadosUser = $cookieStore.get('dadosUser');
 
+   
   $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
   $scope.series = ['Series A', 'Series B'];
   $scope.data = [
