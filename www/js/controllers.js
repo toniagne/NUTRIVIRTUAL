@@ -11,7 +11,7 @@ angular.module('starter.controllers', ['ngCookies'])
             showDelay: 0
           });
 
-  var url = 'http://www.nutrivirtual.com.br/app/login/?callback=JSON_CALLBACK&user='+formData['usuario']+'&pass='+formData['senha'];
+  var url = 'http://www.nutrivirtual.com.br/aplicativo/login/?callback=JSON_CALLBACK&user='+formData['usuario']+'&pass='+formData['senha'];
   
  $http.jsonp(url).success(function(data) {
                        $ionicLoading.hide();  
@@ -94,6 +94,120 @@ angular.module('starter.controllers', ['ngCookies'])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('LerMensagens',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
+    $ionicLoading.show({
+            content: 'Carregando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+   var url = 'http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=1';
+  
+ $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'ERRO INTERNO NO SERVIDOR, TENTE NOVAMENTE MAIS TARDE'
+                         });
+                      } else {   
+                         //$cookieStore.put('dadosUser', data);
+                        //$state.go('tab.area-trabalho');
+
+                        console.log(data);
+                        $scope.mensagens = data;
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'Seu dispositivo não esta conectado na internet.'
+                     });
+
+                  });
+})
+
+.controller('LerMensagensReceitas',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
+    $ionicLoading.show({
+            content: 'Carregando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+   var url = 'http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2';
+  
+ $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'ERRO INTERNO NO SERVIDOR, TENTE NOVAMENTE MAIS TARDE'
+                         });
+                      } else {   
+                         //$cookieStore.put('dadosUser', data);
+                        //$state.go('tab.area-trabalho');
+
+                        console.log(data);
+                        $scope.mensagens = data;
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'VOCÊ AINDA NÃO POSSUI POSTS NESSA CATEGORIA'
+                     });
+
+                  });
+})
+
+.controller('LerMensagensCuriosidades',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
+    $ionicLoading.show({
+            content: 'Carregando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+   var url = 'http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=3';
+  
+ $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'ERRO INTERNO NO SERVIDOR, TENTE NOVAMENTE MAIS TARDE'
+                         });
+                      } else {   
+                         //$cookieStore.put('dadosUser', data);
+                        //$state.go('tab.area-trabalho');
+
+                        console.log(data);
+                        $scope.mensagens = data;
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'VOCÊ AINDA NÃO POSSUI POSTS NESSA CATEGORIA'
+                     });
+
+                  });
 })
 
 .controller('AccountCtrl', function($scope) {

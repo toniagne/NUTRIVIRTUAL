@@ -164,10 +164,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-area-trabalho': {
         templateUrl: 'templates/area-trabalho-mensagens.html',
-        controller: 'AreaTrabalho'
+        controller: 'LerMensagens'
+      }
+    }
+  })
+    .state('tab.area-trabalho-receitas', {
+    url: '/areatrabalho/receitas',
+    views: {
+      'tab-area-trabalho': {
+        templateUrl: 'templates/area-trabalho-receitas.html',
+        controller: 'LerMensagensReceitas'
       }
     }
   }) 
+
+    .state('tab.area-trabalho-curiosidades', {
+    url: '/areatrabalho/curiosidades',
+    views: {
+      'tab-area-trabalho': {
+        templateUrl: 'templates/area-trabalho-curiosidades.html',
+        controller: 'LerMensagensCuriosidades'
+      }
+    }
+  })  
+
+    .state('tab.area-trabalho-chat', {
+    url: '/areatrabalho/chat',
+    views: {
+      'tab-area-trabalho': {
+          templateUrl: 'templates/area-trabalho-chat.html',
+          controller: 'ChatDetailCtrl'
+      }
+    }
+  })  
 
 
     .state('tab.chat-detail', {
