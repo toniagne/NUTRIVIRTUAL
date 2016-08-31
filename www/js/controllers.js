@@ -12,8 +12,7 @@ angular.module('starter.controllers', ['ngCookies'])
           });
 
   var url = 'http://www.nutrivirtual.com.br/aplicativo/login/?callback=JSON_CALLBACK&user='+formData['usuario']+'&pass='+formData['senha'];
-  
- $http.jsonp(url).success(function(data) {
+  $http.jsonp(url).success(function(data) {
                        $ionicLoading.hide();  
                       if (data == ""){
                         return $ionicPopup.alert({
@@ -33,13 +32,23 @@ angular.module('starter.controllers', ['ngCookies'])
                        template: 'Seu dispositivo não esta conectado na internet.'
                      });
 
-                  });
-            
-    
-
- 
-
+                  }); 
  } 
+
+ var urldica = 'http://www.nutrivirtual.com.br/aplicativo/dicadodia/?callback=JSON_CALLBACK';
+  $http.jsonp(urldica).success(function(data) {
+                       $ionicLoading.hide();  
+                       $scope.dicadia = data;
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'Seu dispositivo não esta conectado na internet.'
+                     });
+
+                  });
 
  
 })
@@ -77,14 +86,13 @@ angular.module('starter.controllers', ['ngCookies'])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('ChatsCtrl', function($scope, Chats, $ionicLoading) {
+ 
+
+  
+ 
+
+
   
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
@@ -92,8 +100,26 @@ angular.module('starter.controllers', ['ngCookies'])
   }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $ionicLoading) {
   $scope.chat = Chats.get($stateParams.chatId);
+
+  $ionicLoading.show({
+            content: 'Carregando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+  $scope.iframeUrl = '';
+  ionic.Platform.ready(function(){
+    $scope.iframeUrl = 'http://www.nutrivirtual.com.br/chat/chatAplicativo.php';
+  });
+  $scope.iframeLoadedCallBack = function(){
+    $ionicLoading.hide();
+  }
+
 })
 
 .controller('LerMensagens',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {

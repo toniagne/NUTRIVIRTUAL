@@ -33,6 +33,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     };
   }])
 
+.directive('iframeOnload', [function(){
+  return {
+    scope: {
+        callBack: '&iframeOnload'
+    },
+    link: function(scope, element, attrs){
+        element.on('load', function(){
+            return scope.callBack();
+        })
+    }
+}}])
+.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}])
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

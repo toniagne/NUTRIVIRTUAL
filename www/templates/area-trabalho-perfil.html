@@ -1,6 +1,8 @@
  
 <ion-view view-title="MEU PERFIL">
-	 
+	     <ion-nav-buttons side="LEFT">
+        <a href="#/tab/areatrabalho" class="button button-icon icon ion-home"></a>
+    </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <a href="#/tab/areatrabalho/configuracoes" class="button button-icon icon ion-gear-b"></a>
     </ion-nav-buttons>
@@ -13,17 +15,15 @@
       </div> 
       <h3>{{dadosUser[0].nome}}</h3>
       <p>Paciente</p>
-      <i class="ion-ios-location"></i> {{dadosUser[0].cidade}} / RS
+      <i class="ion-ios-location"></i> {{dadosUser[0].cidade}} / {{dadosUser[0].uf}}<br>
+      <i class="ion-ios-telephone"></i> {{dadosUser[0].tel}} <br>
+      <i class="ion-ios-telephone"></i> {{dadosUser[0].cel}} <br>
+      <i class="ion-lock-combination"></i> <b>{{dadosUser[0].senha}}</b> <br>
     </center>
     <br> 
 
     <div class="card">
-	  <div class="item item-divider">
-	    Estatísticas
-	  </div>
-	  <div class="item item-text-wrap">
-	    Aqui podes puxar um iframe de algum gráfico
-	  </div>
+	   
 	   
 	</div>
   </ion-content>
