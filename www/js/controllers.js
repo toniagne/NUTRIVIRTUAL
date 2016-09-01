@@ -2,6 +2,14 @@ angular.module('starter.controllers', ['ngCookies'])
 
 .controller('DashCtrl',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
  $scope.dadosUser = $cookieStore.get('dadosUser');
+
+$scope.options = {
+  loop: false,
+  effect: 'fade',
+  speed: 500,
+}
+ 
+
  $scope.submit = function(contactform, formData) {
   $ionicLoading.show({
             content: 'Carregando USUÁRIO',
@@ -10,6 +18,8 @@ angular.module('starter.controllers', ['ngCookies'])
             maxWidth: 200,
             showDelay: 0
           });
+
+
 
   var url = 'http://www.nutrivirtual.com.br/aplicativo/login/?callback=JSON_CALLBACK&user='+formData['usuario']+'&pass='+formData['senha'];
   $http.jsonp(url).success(function(data) {
