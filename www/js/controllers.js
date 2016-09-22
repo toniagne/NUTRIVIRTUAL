@@ -110,9 +110,9 @@ $scope.options = {
   }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $ionicLoading) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $ionicLoading, $cookieStore) {
   $scope.chat = Chats.get($stateParams.chatId);
-
+  $scope.dadosUser = $cookieStore.get('dadosUser');
   $ionicLoading.show({
             content: 'Carregando USUÁRIO',
             animation: 'fade-in',
@@ -121,10 +121,10 @@ $scope.options = {
             showDelay: 0
           });
 
-
+ 
   $scope.iframeUrl = '';
   ionic.Platform.ready(function(){
-    $scope.iframeUrl = 'http://www.nutrivirtual.com.br/chat/chatAplicativo.php';
+    $scope.iframeUrl = 'http://www.nutrivirtual.com.br/chat/chatAplicativo.php?nome='+$scope.dadosUser[0]['nome'];
   });
   $scope.iframeLoadedCallBack = function(){
     $ionicLoading.hide();
