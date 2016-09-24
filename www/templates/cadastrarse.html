@@ -1,32 +1,41 @@
 <ion-view view-title="Cadastrar-se">
   <ion-content class="padding">
+
     <Br>
     <img src="img/logo.png" width="60%">
     <Br>
+    <h4>VENHA PARTICIPAR DO TRATAMENTO NUTRIVIRTUAL </h4>
       <div class="list" style="padding: 20px;">
+        <form method="post" ng-submit="cadastrarse(contactform, formData)" name="contactform" role="form">
           <label class="item item-input" >
             <i class="ion-person placeholder-icon"></i>
-            <input type="text" placeholder="SEU NOME">
+            <input type="text" ng-model="formData.nome" placeholder="SEU NOME">
           </label>
 
           <label class="item item-input" >
-            <i class="ion-key placeholder-icon"></i>
-            <input type="text" placeholder="SENHA">
+            <i class="ion-map placeholder-icon"></i>
+            <input type="text" ng-model="formData.estado" placeholder="ESTADO">
+          </label>
+
+          <label class="item item-input" >
+            <i class="ion-ios-location placeholder-icon"></i>
+            <input type="text" ng-model="formData.cidade" placeholder="CIDADE">
           </label>
 
           <label class="item item-input" >
             <i class="ion-android-mail placeholder-icon"></i>
-            <input type="text" placeholder="E-MAIL">
+            <input type="text" ng-model="formData.email" placeholder="E-MAIL">
           </label>
 
           <label class="item item-input" >
             <i class="ion-iphone placeholder-icon"></i>
-            <input type="text" placeholder="TELEFONE">
+            <input type="text" ng-model="formData.telefone" placeholder="TELEFONE">
           </label>
 
           <button class="button button-block button-positive">
           CADASTRAR-SE
         </button> 
+        </form>
       </div>
         
         

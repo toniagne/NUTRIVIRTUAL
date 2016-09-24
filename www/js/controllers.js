@@ -45,6 +45,80 @@ $scope.options = {
                   }); 
  } 
 
+  $scope.cadastrarse = function(contactform, formData) {
+  $ionicLoading.show({
+            content: 'Cadastrando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+
+  var url = 'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&estado='+formData['estado']+'&cidade='+formData['cidade']+'&email='+formData['email']+'&telefone='+formData['telefone'];
+  $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'VOCÊ DEVE PREENCHER TODOS OS CAMPOS CORRETAMENTE'
+                         });
+                      } else {   
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'PARABÉNS ! VOCÊ ENVIOU O SEU CADASTRO PARA O NOSSO ATENDIMENTO. EM BREVE ENTRAREMOS EM CONTATO'
+                         });
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'SEU DISPOSITIVO NÃO ESTA CONECTADO NA INTERNET.'
+                     });
+
+                  }); 
+ } 
+
+  $scope.lembrarsenha = function(contactform, formData) {
+  $ionicLoading.show({
+            content: 'Cadastrando USUÁRIO',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+          });
+
+
+
+  var url = 'http://www.nutrivirtual.com.br/aplicativo/lembrarsenha/?callback=JSON_CALLBACK&email='+formData['email'];
+  $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'VOCÊ DIGITOU INCORRETAMENTE O SEU E-MAIL, OU VOCÊ AINDA NÃO TEM CADASTRO. APROVEITE E CADASTRE-SE AGORA'
+                         });
+                      } else {   
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'ENVIAMOS PARA O SEU E-MAIL A SENHA E O LOGIN PARA ACESSAR SUA CONTA.'
+                         });
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'SEU DISPOSITIVO NÃO ESTA CONECTADO NA INTERNET.'
+                     });
+
+                  }); 
+ } 
+
  var urldica = 'http://www.nutrivirtual.com.br/aplicativo/dicadodia/?callback=JSON_CALLBACK';
   $http.jsonp(urldica).success(function(data) {
                        $ionicLoading.hide();  

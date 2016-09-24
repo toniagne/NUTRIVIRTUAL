@@ -6,10 +6,11 @@
       <h3>Esqueceu sua Senha ?</h3>
       Entre com seu e-mail para enviar-mos um lembrete da sua senha<br>
       <Br>
+      <form method="post" ng-submit="lembrarsenha(contactform, formData)" name="contactform" role="form">
       <div class="list" style="padding: 20px;">  
          <label class="item item-input" >
             <i class="ion-android-mail placeholder-icon"></i>
-            <input type="text" placeholder="E-MAIL">
+            <input type="text" ng-model="formData.email" placeholder="E-MAIL">
           </label>
  
           <div class="row">
