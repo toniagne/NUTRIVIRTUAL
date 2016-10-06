@@ -93,6 +93,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
+  .state('tab.dash-oquee', {
+      url: '/dash/oquee',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/oquee.html',
+          controller: 'DashCtrl'
+        }
+      }
+    })
+
   .state('tab.dash-login', {
       url: '/dash/login',
       views: {
