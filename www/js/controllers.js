@@ -45,6 +45,76 @@ $scope.options = {
                   }); 
  } 
 
+
+  $scope.loginchat = function(contactform, formData) {
+                  $ionicLoading.show({
+                          content: 'Carregando USUÁRIO',
+                          animation: 'fade-in',
+                          showBackdrop: true,
+                          maxWidth: 200,
+                          showDelay: 0
+                        });
+
+                  var url = 'http://www.nutrivirtual.com.br/aplicativo/loginchat/?callback=JSON_CALLBACK&user='+formData['email'];
+                   $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'SEU E-MAIL ESTA ERRADO ! OU VOCÊ AINDA NÃO ESTA CADASTRADO'
+                         });
+                      } else {   
+                         $cookieStore.put('dadosUser', data);
+                         $state.go('tab.area-trabalho-chat2');
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'Seu dispositivo não esta conectado na internet.'
+                     });
+
+                  }); 
+ } 
+
+  $scope.alterarsenha = function(contactform, formData) {
+                  $ionicLoading.show({
+                          content: 'Carregando USUÁRIO',
+                          animation: 'fade-in',
+                          showBackdrop: true,
+                          maxWidth: 200,
+                          showDelay: 0
+                        });
+                  var dadosusuario = $cookieStore.get('dadosUser'); 
+                  var url = 'http://www.nutrivirtual.com.br/aplicativo/alterarsenha/?callback=JSON_CALLBACK&id='+dadosusuario[0].id+'&pass='+formData['senha'];
+                   $http.jsonp(url).success(function(data) {
+                       $ionicLoading.hide();  
+                      if (data == ""){
+                        return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'SEU E-MAIL ESTA ERRADO ! OU VOCÊ AINDA NÃO ESTA CADASTRADO'
+                         });
+                      } else {   
+                          return $ionicPopup.alert({
+                           title: 'ATENÇÃO.',
+                           template: 'SUA SENHA FOI ALTERADA COM SUCESSO !!   '
+                         });
+                      }
+
+
+                  }).error(function(data) {
+                      $ionicLoading.hide();   
+                      return $ionicPopup.alert({
+                       title: 'ATENÇÃO.',
+                       template: 'SUA SENHA FOI ALTERADA COM SUCESSO !!'
+                     });
+
+                  }); 
+ } 
+
+
   $scope.cadastrarse = function(contactform, formData) {
   $ionicLoading.show({
             content: 'Cadastrando USUÁRIO',
@@ -65,6 +135,7 @@ $scope.options = {
                            template: 'VOCÊ DEVE PREENCHER TODOS OS CAMPOS CORRETAMENTE'
                          });
                       } else {   
+                        $state.go('tab.area-trabalho-chat');
                         return $ionicPopup.alert({
                            title: 'ATENÇÃO.',
                            template: 'PARABÉNS ! VOCÊ ENVIOU O SEU CADASTRO PARA O NOSSO ATENDIMENTO. EM BREVE ENTRAREMOS EM CONTATO'

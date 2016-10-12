@@ -1,24 +1,27 @@
 <ion-view >
   <ion-content class="padding">
-     <Br><Br><Br>
+     <Br><Br>
      <img src="img/logo.png" width="80%">
-    <Br><Br><Br>
+    <Br><Br>
       <div class="list" style="padding: 20px;">
 
-         <form method="post" ng-submit="submit(contactform, formData)" name="contactform" role="form">
+      <p>
+      <b>Olá amigo</b>,<br> você não esta sozinho ! <br>
+      Para que você fale conosco, é necessário um pré-cadastro, para que possamos nos conhecer um pouco.</p>
+    <a href="#/tab/dash/cadastrarse" class="button button-light icon-left button-positive  button-clear">
+        <i class="ion-android-open"></i> Cadastrar-se já !
+      </a>
+
+
+         <form method="post" ng-submit="loginchat(contactform, formData)" name="contactform" role="form">
 
           <label class="item item-input" >
             <i class="ion-person-stalker placeholder-icon"></i>
-            <input type="text" ng-model="formData.usuario" placeholder="USUÁRIO">
+            <input type="text" ng-model="formData.email" placeholder="SEU E-MAIL">
           </label>
 
-          <label class="item item-input" >
-            <i class="ion-key placeholder-icon"></i>
-            <input type="text" ng-model="formData.senha" placeholder="SENHA">
-          </label>
-
-          <button type="submit" class="button button-block button-positive">LOGAR-SE</button>
-           
+          <button type="submit" class="button button-block button-positive">ABRIR O CHAT</button>
+           </form>
       </div>
       <!--
         <div class="row">
@@ -27,15 +30,9 @@
           <div class="col"><a href="#"><img src="img/ic_google.png" width="80%"></a></div> 
         </div>
         -->
-       
-
   
-<a HREF="#/tab/dash/oquee" class="button icon-left ion-star button-full button-balanced">
-  O QUE É NUTRIVIRTUAL ?
-</a>
 
- <a href="#tab/dash/loginchat" class="button button-full icon-left ion-chatbubbles button-calm">FALE CONOSCO</a>
-
+ 
   </ion-content>
 </ion-view>
 <div class="bar bar-footer">

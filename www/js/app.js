@@ -102,6 +102,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
+  .state('tab.dash-loginchat', {
+      url: '/dash/loginchat',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/loginchat.html',
+          controller: 'DashCtrl'
+        }
+      }
+    })
 
   .state('tab.dash-login', {
       url: '/dash/login',
@@ -137,7 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-area-trabalho': {
         templateUrl: 'templates/area-trabalho-perfil.html',
-        controller: 'AreaTrabalho'
+        controller: 'DashCtrl'
       }
     }
   })
@@ -155,6 +164,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-area-trabalho': {
         templateUrl: 'templates/area-trabalho-configuracoes.html',
+        controller: 'AreaTrabalho'
+      }
+    }
+  }) 
+  .state('tab.area-trabalho-configuracoes2', {
+    url: '/areatrabalho/configuracoes2',
+    views: {
+      'tab-area-trabalho': {
+        templateUrl: 'templates/area-trabalho-configuracoes2.html',
         controller: 'AreaTrabalho'
       }
     }
@@ -224,7 +242,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })  
-
+    .state('tab.area-trabalho-chat2', {
+    url: '/areatrabalho/chat',
+    views: {
+      'tab-area-trabalho': {
+          templateUrl: 'templates/area-trabalho-chat2.html',
+          controller: 'ChatDetailCtrl'
+      }
+    }
+  })  
 
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
