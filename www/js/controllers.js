@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCookies'])
+angular.module('starter.controllers', ['ngCookies', "ngSanitize"])
 
 .controller('DashCtrl',  function($scope, $http, $ionicPopup, $ionicLoading, $location, $state, $cookieStore) {
  $scope.dadosUser = $cookieStore.get('dadosUser');
@@ -108,7 +108,7 @@ $scope.options = {
                       $ionicLoading.hide();   
                       return $ionicPopup.alert({
                        title: 'ATENÇÃO.',
-                       template: 'SUA SENHA FOI ALTERADA COM SUCESSO !!'
+                       template: 'SUA SENHA FOI ALTERADA COM SUCESSO !! '
                      });
 
                   }); 
@@ -338,7 +338,7 @@ $scope.options = {
                          //$cookieStore.put('dadosUser', data);
                         //$state.go('tab.area-trabalho');
 
-                        console.log(data);
+                        //console.log(data);
                         $scope.mensagens = data;
                       }
 
