@@ -14,7 +14,7 @@
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="4000" />
-    <plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
+    <plugin name="com.phonegap.plugins.pushplugin" source="pgb" spec="2.5.0" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
@@ -110,10 +110,9 @@
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/drawable-port-mdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/drawable-port-xhdpi-screen.png" />
-
     <access origin="*" />
     <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />''
+    <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -125,4 +124,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <plugin name="phonegap-plugin-push" spec="~1.8.3">
+        <variable name="SENDER_ID" value="141922" />
+    </plugin>
 </widget>
