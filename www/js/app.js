@@ -17,7 +17,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
-    }
+    }   
+    var push = PushNotification.init({"android": {"senderID":"nutrivirtual-141922", icon: "icon"},
+                                      "ios": {"alert":"true",  "badge":"true", "sound":"true"}, "windows": {} });
+
+    push.on('registration', function(data) {
+       console.log(data);
+       alert(data.registrationId);
+   });
+    // Este é o evento no qual implementando o comportamento do nosso app
+    // quando o usuário clicar na notificação
+    push.on('notification', function(data) {
+       alert('Notificação acionada, agora deve-se implementar a navegação no app de acordo com os dados: ' + JSON.stringify(data));
+   });
+   push.on('error', function(e) {
+       alert('registration error: ' + e.message);
+   });
+
   });
 })
 
