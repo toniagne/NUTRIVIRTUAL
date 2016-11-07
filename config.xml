@@ -13,8 +13,7 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="SplashScreen" value="splash" />
-    <preference name="SplashScreenDelay" value="4000" />
-    <plugin name="com.phonegap.plugins.pushplugin" source="pgb" spec="2.5.0" />
+    <preference name="SplashScreenDelay" value="4000" /> 
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
