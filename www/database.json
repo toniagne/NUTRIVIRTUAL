@@ -52,7 +52,7 @@
     }
   ],
   "users_connections": [
-    "Facebook friend",
+    "Facebook",
     "Instagram follower",
     "Work together"
   ],
@@ -60,74 +60,74 @@
     {
       "id": 0,
       "name": {
-        "first": "Alex",
-        "last": "Snyder"
-      },
-      "username": "aSnyder",
-      "picture": "img/sample_images/people/1.jpg",
-      "about": "Velit esse deserunt eu proident sint occaecat est mollit et eu tempor.",
-      "email": "alex.snyder@gmail.com",
-      "website": "http://www.google.com"
-    },
-    {
-      "id": 1,
-      "name": {
-        "first": "Blain",
-        "last": "Willis"
-      },
-      "username": "bWillis",
-      "picture": "img/sample_images/people/2.jpg",
-      "about": "Fugiat voluptate ipsum laborum dolore consectetur sint mollit veniam minim do officia qui aliqua.",
-      "email": "blain.willis@gmail.com",
-      "website": "http://www.google.com"
-    },
-    {
-      "id": 2,
-      "name": {
-        "first": "Garrett",
-        "last": "Bentley"
-      },
-      "username": "gBentley",
-      "picture": "img/sample_images/people/3.jpg",
-      "about": "Do aliqua nisi eiusmod minim aute consectetur.",
-      "email": "garrett.bentley@gmail.com",
-      "website": "http://www.google.com"
-    },
-    {
-      "id": 3,
-      "name": {
-        "first": "Geri",
-        "last": "Mcfarland"
-      },
-      "username": "gMcfarland",
-      "picture": "img/sample_images/people/4.jpg",
-      "about": "Aute nisi minim sunt minim voluptate consectetur occaecat anim et.",
-      "email": "geri.mcfarland@gmail.com",
-      "website": "http://www.google.com"
-    },
-    {
-      "id": 4,
-      "name": {
-        "first": "Kerry",
-        "last": "Rasmussen"
+        "first": "NutriVirtual",
+        "last": "Administrador"
       },
       "username": "kRasmussen",
       "picture": "img/sample_images/people/5.jpg",
       "about": "Do esse culpa occaecat reprehenderit irure mollit.",
-      "email": "kerry.rasmussen@gmail.com",
-      "website": "http://www.google.com"
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
+    },
+    {
+      "id": 1,
+      "name": {
+        "first": "NutriVirtual",
+        "last": "Administrador"
+      },
+      "username": "kRasmussen",
+      "picture": "img/sample_images/people/5.jpg",
+      "about": "Do esse culpa occaecat reprehenderit irure mollit.",
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
+    },
+    {
+      "id": 2,
+      "name": {
+        "first": "NutriVirtual",
+        "last": "Administrador"
+      },
+      "username": "kRasmussen",
+      "picture": "img/sample_images/people/5.jpg",
+      "about": "Do esse culpa occaecat reprehenderit irure mollit.",
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
+    },
+    {
+      "id": 3,
+      "name": {
+        "first": "NutriVirtual",
+        "last": "Administrador"
+      },
+      "username": "kRasmussen",
+      "picture": "img/sample_images/people/5.jpg",
+      "about": "Do esse culpa occaecat reprehenderit irure mollit.",
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
+    },
+    {
+      "id": 4,
+      "name": {
+        "first": "NutriVirtual",
+        "last": "Administrador"
+      },
+      "username": "kRasmussen",
+      "picture": "img/sample_images/people/5.jpg",
+      "about": "Do esse culpa occaecat reprehenderit irure mollit.",
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
     },
     {
       "id": 5,
       "name": {
-        "first": "Sarah",
-        "last": "Frederick"
+        "first": "NutriVirtual",
+        "last": "Administrador"
       },
-      "username": "sFrederick",
-      "picture": "img/sample_images/people/6.jpg",
-      "about": "Adipisicing eu deserunt consequat non officia anim ut cupidatat.",
-      "email": "sarah.frederick@gmail.com",
-      "website": "http://www.google.com"
+      "username": "kRasmussen",
+      "picture": "img/sample_images/people/5.jpg",
+      "about": "Do esse culpa occaecat reprehenderit irure mollit.",
+      "email": "contato@nutrivirtual.com.br",
+      "website": "http://www.nutrivirtual.com.br"
     }
   ],
   "following": [
