@@ -443,15 +443,21 @@
   "trends": [
     {
       "id": 0,
-      "name": "Oscars",
-      "slug": "oscars",
+      "name": "Anexos",
+      "slug": "anexos",
       "image": "img/sample_images/trends/oscars.jpg"
     },
     {
       "id": 1,
-      "name": "US Open",
-      "slug": "us-open",
+      "name": "Grupos",
+      "slug": "grupos",
       "image": "img/sample_images/trends/us-open.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Evolução",
+      "slug": "evolucao",
+      "image": "img/sample_images/trends/estatisticas.jpg"
     }
   ],
   "categories": [
