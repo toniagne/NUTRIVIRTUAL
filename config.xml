@@ -35,8 +35,10 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 
-    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
-    
+    <plugin name="phonegap-plugin-push" spec="1.6.0">
+    <param name="SENDER_ID" value="nutrivirtual-141922" />
+    </plugin>
+
     <icon src="icon.png" />
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
