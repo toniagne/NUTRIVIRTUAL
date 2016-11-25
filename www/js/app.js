@@ -618,7 +618,7 @@ console.log(chat);
 }]), angular.module("your_app_name.app.services", []).service("AuthService", ["$http", "$q", function(e, n) {
     this.getLoggedUser = function() {
         var t = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.users, function(e) {
                 return 0 == e.id
             });
@@ -628,7 +628,7 @@ console.log(chat);
 }]).service("ProfileService", ["$http", "$q", function(e, n) {
     this.getUserData = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.users, function(e) {
                 return e.id == t
             });
@@ -636,7 +636,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserFollowers = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.filter(e.following, function(e) {
                     return e.followsId == t
                 }),
@@ -656,7 +656,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserFollowing = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.filter(e.following, function(e) {
                     return e.userId == t
                 }),
@@ -673,7 +673,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserPictures = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.filter(e.users_pictures, function(e) {
                 return e.userId == t
             });
@@ -681,7 +681,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserPosts = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.filter(e.posts, function(e) {
                 return e.userId == t
             });
@@ -695,7 +695,7 @@ console.log(chat);
             i = 1,
             a = 1,
             r = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             i = e.posts.length, a = i / o;
             var n = _.sortBy(e.posts, function(e) {
                     return new Date(e.date)
@@ -717,7 +717,7 @@ console.log(chat);
             a = 1,
             r = 1,
             l = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             a = e.posts.length, r = a / s;
             var n = _.sortBy(e.posts, function(e) {
                 return new Date(e.date)
@@ -742,7 +742,7 @@ console.log(chat);
             a = 1,
             r = 1,
             l = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             a = e.posts.length, r = a / s;
             var n = _.sortBy(e.posts, function(e) {
                 return new Date(e.date)
@@ -763,7 +763,7 @@ console.log(chat);
         }), l.promise
     }, this.getPostComments = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = e.users;
             n = window.knuthShuffle(n.slice(0, t.comments));
             var s = [];
@@ -777,7 +777,7 @@ console.log(chat);
         }), o.promise
     }, this.getPost = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.posts, function(e) {
                 return e.id == t
             });
@@ -789,7 +789,7 @@ console.log(chat);
 }]).service("PeopleService", ["$http", "$q", function(e, n) {
     this.getPeopleSuggestions = function() {
         var t = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.each(e.people_suggestions, function(n) {
                 n.user = _.find(e.users, function(e) {
                     return e.id == n.userId
@@ -803,7 +803,7 @@ console.log(chat);
         }), t.promise
     }, this.getPeopleYouMayKnow = function() {
         var t = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.each(e.people_you_may_know, function(n) {
                 return n.user = _.find(e.users, function(e) {
                     return e.id == n.userId
@@ -815,12 +815,12 @@ console.log(chat);
 }]).service("TrendsService", ["$http", "$q", function(e, n) {
     this.getTrends = function() {
         var t = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             t.resolve(e.trends)
         }), t.promise
     }, this.getTrend = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.trends, function(e) {
                 return e.id == t
             });
@@ -830,12 +830,12 @@ console.log(chat);
 }]).service("CategoryService", ["$http", "$q", function(e, n) {
     this.getCategories = function() {
         var t = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             t.resolve(e.categories)
         }), t.promise
     }, this.getCategory = function(t) {
         var o = n.defer();
-        return e.get("database.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.categories, function(e) {
                 return e.id == t
             });
