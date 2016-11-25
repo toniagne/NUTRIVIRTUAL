@@ -627,7 +627,7 @@ console.log(chat);
     }
 }]).service("ProfileService", ["$http", "$q", function(e, n) {
     this.getUserData = function(t) {
-        var o = n.defer();
+        var o = n.defer();   
         return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
             var n = _.find(e.users, function(e) {
                 return e.id == t

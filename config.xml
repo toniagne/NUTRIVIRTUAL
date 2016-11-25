@@ -6,7 +6,7 @@
     </description>
     <author email="toniagne@gmail.com" href="http://phonegap.com">
         Toni Agne
-    </author>
+    </author>   
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
