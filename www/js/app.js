@@ -618,7 +618,7 @@ console.log(chat);
 }]), angular.module("your_app_name.app.services", []).service("AuthService", ["$http", "$q", function(e, n) {
     this.getLoggedUser = function() {
         var t = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.find(e.users, function(e) {
                 return 0 == e.id
             });
@@ -628,7 +628,7 @@ console.log(chat);
 }]).service("ProfileService", ["$http", "$q", function(e, n) {
     this.getUserData = function(t) {
         var o = n.defer();   
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.find(e.users, function(e) {
                 return e.id == t
             });
@@ -636,7 +636,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserFollowers = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.filter(e.following, function(e) {
                     return e.followsId == t
                 }),
@@ -656,7 +656,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserFollowing = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.filter(e.following, function(e) {
                     return e.userId == t
                 }),
@@ -673,7 +673,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserPictures = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.filter(e.users_pictures, function(e) {
                 return e.userId == t
             });
@@ -681,7 +681,7 @@ console.log(chat);
         }), o.promise
     }, this.getUserPosts = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.get("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.filter(e.posts, function(e) {
                 return e.userId == t
             });
@@ -695,7 +695,7 @@ console.log(chat);
             i = 1,
             a = 1,
             r = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             i = e.posts.length, a = i / o;
             var n = _.sortBy(e.posts, function(e) {
                     return new Date(e.date)
@@ -717,7 +717,7 @@ console.log(chat);
             a = 1,
             r = 1,
             l = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             a = e.posts.length, r = a / s;
             var n = _.sortBy(e.posts, function(e) {
                 return new Date(e.date)
@@ -742,7 +742,7 @@ console.log(chat);
             a = 1,
             r = 1,
             l = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             a = e.posts.length, r = a / s;
             var n = _.sortBy(e.posts, function(e) {
                 return new Date(e.date)
@@ -763,7 +763,7 @@ console.log(chat);
         }), l.promise
     }, this.getPostComments = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = e.users;
             n = window.knuthShuffle(n.slice(0, t.comments));
             var s = [];
@@ -777,7 +777,7 @@ console.log(chat);
         }), o.promise
     }, this.getPost = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.find(e.posts, function(e) {
                 return e.id == t
             });
@@ -789,7 +789,7 @@ console.log(chat);
 }]).service("PeopleService", ["$http", "$q", function(e, n) {
     this.getPeopleSuggestions = function() {
         var t = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.each(e.people_suggestions, function(n) {
                 n.user = _.find(e.users, function(e) {
                     return e.id == n.userId
@@ -803,7 +803,7 @@ console.log(chat);
         }), t.promise
     }, this.getPeopleYouMayKnow = function() {
         var t = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.each(e.people_you_may_know, function(n) {
                 return n.user = _.find(e.users, function(e) {
                     return e.id == n.userId
@@ -815,12 +815,12 @@ console.log(chat);
 }]).service("TrendsService", ["$http", "$q", function(e, n) {
     this.getTrends = function() {
         var t = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             t.resolve(e.trends)
         }), t.promise
     }, this.getTrend = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.find(e.trends, function(e) {
                 return e.id == t
             });
@@ -830,12 +830,12 @@ console.log(chat);
 }]).service("CategoryService", ["$http", "$q", function(e, n) {
     this.getCategories = function() {
         var t = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             t.resolve(e.categories)
         }), t.promise
     }, this.getCategory = function(t) {
         var o = n.defer();
-        return e.get("http://www.nutrivirtual.com.br/aplicativo/database2.json").success(function(e) {
+        return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.find(e.categories, function(e) {
                 return e.id == t
             });
@@ -878,7 +878,7 @@ console.log(chat);
         e.put("views/app/partials/feed-post-card.html", '<div class="card-1">\n    <div class="list card">\n        <div class="item item-image">\n            <a class="card-image-anchor" ui-sref="app.post({ postId: card.id })">\n                <pre-img ratio="_8_5" helper-class="main-image">\n                    <img ng-src="{{ card.picture }}" spinner-on-load>\n                </pre-img>\n            </a>\n        </div>\n        <div class="item item-body">\n            <a ui-sref="app.post({ postId: card.id })">\n                <h2 class="card-title">{{ card.title }}         </h2>\n            </a>\n        </div>\n        <div class="item item-avatar">\n            <div class="card-avatar-image-outer">\n                <a ui-sref="app.profile.posts({userId: card.userId})">\n                    <pre-img ratio="_1_1" helper-class="avatar-image">\n                        <img ng-src="{{ card.user.picture }}" spinner-on-load>\n                    </pre-img>\n                </a>\n            </div>\n            <a ui-sref="app.profile.posts({userId: card.userId})">\n                <h2 class="avatar-title">{{ card.user.name.first }} {{ card.user.name.last }}         </h2>\n            </a>\n            <p class="avatar-description">         <span am-time-ago="card.date">         </span>       </p>\n              <a ui-sref="app.category_feed({ categoryId: card.category.id })">\n                  <span class="card-tag post-category {{ card.category.name }}">{{ card.category.name }}         </span>\n              </a>\n        </div>\n        <div class="actions-brief">\n            <a href="#" class="subdued">{{card.likes}} Curtidas       </a>\n            <a ng-controller="CommentsCtrl" ng-click="showComments(card)" class="subdued">{{card.comments}} Comentarios       </a>\n            <a href="#" class="subdued">{{card.shares}} Compartilhamentos       </a>\n        </div>\n        <div class="item tabs tabs-icon-left">\n            <a class="tab-item" ng-class="{liked: card.liked}" href="#">\n                <i class="icon theme-icon icon-like">         </i>\n        Curtir\n            </a>\n            <a class="tab-item" ng-controller="CommentsCtrl" ng-click="showComments(card)">\n                <i class="icon theme-icon icon-bubble">         </i>\n        Comentar\n            </a>\n            <a class="tab-item" social-share share="card">\n                <i class="icon theme-icon icon-share">         </i>\n        Compartilhar\n            </a>\n        </div>\n    </div>\n </div>\n '), 
         e.put("views/app/partials/new_status_post.html", '<ion-modal-view class="new-status-post-view">\n <ion-header-bar class="bar-positive">\n <div class="buttons">\n <button class="button button-clear" ng-click="new_status_post_modal.hide()">Cancela       </button>\n </div>\n <h1 class="title">Fale Conosco     </h1>\n </ion-header-bar>\n <ion-content>\n <iframe ng-src="http://www.nutrivirtual.com.br/webroot/mensagens/index.php" style="width:100%; height: 100%;"></iframe>\n </ion-content>\n </ion-modal-view>\n'), 
         e.put("views/app/partials/profile-post-card.html", '<div class="card-7">\n  <div class="card">\n    <div class="row card-content-wrapper">\n      <div class="col col-33 image-wrapper">\n        <a class="card-image-anchor" ui-sref="app.post({ postId: post.id })">\n          <pre-img ratio="_1_1" helper-class="profile-post-image">\n            <img class="post-image" ng-src="{{post.picture}}" spinner-on-load>\n          </pre-img>\n        </a>\n      </div>\n      <div class="col card-data">\n        <a class="card-title-outer" ui-sref="app.post({ postId: post.id })">\n          <h2 class="card-title">{{post.title}}</h2>\n        </a>\n        <div class="actions-brief">\n          <a href="#" class="subdued">{{post.likes}} Likes</a>\n          <a ng-controller="CommentsCtrl" ng-click="showComments(post)" class="subdued">{{post.comments}} Comments</a>\n          <a href="#" class="subdued">{{post.shares}} Shares</a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n'), 
-        e.put("views/app/post/details.html", '<ion-view view-title="{{post.title}}" class="post-details-view">\n  <ion-content overflow-scroll="true">\n    <div class="post-card-content">\n      <div class="item item-image">\n        <pre-img ratio="_1_1" helper-class="main-image">\n          <img ng-src="{{post.picture}}" spinner-on-load>\n        </pre-img>\n      </div>\n      <div class="item item-divider trend-callout">\n        <span class="post-trend-copy"></span>\n        <a class="trend-wrapper button button-small" ui-sref="app.trend_feed({ trendId: post.trend.id })">\n          <i class="icon ion-arrow-graph-up-right"></i>\n          <span class="post-trend">{{ post.trend.name }}</span>\n          <i class="icon ion-chevron-right"></i>\n        </a>\n      </div>\n      <div class="item item-body">\n        <h2 class="post-title">{{post.title}}</h2>\n      </div>\n      <div class="item item-avatar">\n        <div class="card-avatar-image-outer">\n          <a ui-sref="app.profile.posts({userId: post.userId})">\n            <pre-img ratio="_1_1" helper-class="avatar-image">\n              <img ng-src="{{ post.user.picture }}" spinner-on-load>\n            </pre-img>\n          </a>\n        </div>\n        <a ui-sref="app.profile.posts({userId: post.userId})">\n          <h2 class="avatar-title">{{ post.user.name.first }} {{ post.user.name.last }}</h2>\n        </a>\n        <p class="avatar-description"><span am-time-ago="post.date"></span></p>\n          <a ui-sref="app.category_feed({ categoryId: post.category.id })">\n            <span class="post-category {{ post.category.name }}">{{ post.category.name }}</span>\n          </a>\n      </div>\n      <div class="item item-body post-description-outer">\n        <p class="post-description">{{post.description}}</p>\n      </div>\n    </div>\n  </ion-content>\n  <ion-footer-bar class="bar-stable">\n    <div class="row">\n      <div class="col col-50 col-center actions-col">\n        <button class="button button-icon theme-icon icon-like"></button>\n        <button ng-controller="CommentsCtrl" class="button button-icon theme-icon icon-bubble" ng-click="showComments(post)"></button>\n        <button class="button button-icon theme-icon icon-share" social-share share="post"></button>\n      </div>\n      <div class="col col-50 col-center brief-col">\n        <div class="actions-brief">\n          <a href="#" class="subdued">{{post.likes}} Likes</a>\n          <a ng-controller="CommentsCtrl" ng-click="showComments(post)" class="subdued">{{post.comments}} Comments</a>\n        </div>\n      </div>\n    </div>\n  </ion-footer-bar>\n</ion-view>\n'), 
+        e.put("views/app/post/details.html", '<ion-view view-title="{{post.title}}" class="post-details-view">\n <ion-content overflow-scroll="true">\n <div class="post-card-content">\n <div class="item item-image">\n <pre-img ratio="_1_1" helper-class="main-image">\n <img ng-src="{{post.picture}}" spinner-on-load>\n </pre-img>\n </div>\n <div class="item item-divider trend-callout">\n <span class="post-trend-copy"></span>\n <a class="trend-wrapper button button-small" ui-sref="app.trend_feed({ trendId: post.trend.id })">\n <i class="icon ion-arrow-graph-up-right"></i>\n <span class="post-trend">{{ post.trend.name }}</span>\n <i class="icon ion-chevron-right"></i>\n </a>\n </div>\n <div class="item item-body">\n <h2 class="post-title">{{post.title}}</h2>\n </div>\n <div class="item item-avatar">\n <div class="card-avatar-image-outer">\n <a ui-sref="app.profile.posts({userId: post.userId})">\n <pre-img ratio="_1_1" helper-class="avatar-image">\n <img ng-src="{{ post.user.picture }}" spinner-on-load>\n </pre-img>\n </a>\n </div>\n <a ui-sref="app.profile.posts({userId: post.userId})">\n <h2 class="avatar-title">{{ post.user.name.first }} {{ post.user.name.last }}</h2>\n </a>\n <p class="avatar-description"> <span am-time-ago="post.date"></span> </p>\n <a ui-sref="app.category_feed({ categoryId: post.category.id })">\n <span class="post-category {{ post.category.name }}">{{ post.category.name }}</span>\n </a>\n </div>\n <div class="item item-body post-description-outer">\n <p class="post-description" ng-bind-html="post.description"> </p>\n </div>\n </div>\n </ion-content>\n <ion-footer-bar class="bar-stable">\n <div class="row">\n <div class="col col-50 col-center actions-col">\n <button class="button button-icon theme-icon icon-like"></button>\n <button ng-controller="CommentsCtrl" class="button button-icon theme-icon icon-bubble" ng-click="showComments(post)"></button>\n <button class="button button-icon theme-icon icon-share" social-share share="post"></button>\n </div>\n <div class="col col-50 col-center brief-col">\n <div class="actions-brief">\n <a href="#" class="subdued">{{post.likes}} Likes</a>\n <a ng-controller="CommentsCtrl" ng-click="showComments(post)" class="subdued">{{post.comments}} Comments</a>\n </div>\n </div>\n </div>\n </ion-footer-bar>\n </ion-view>\n'), 
         e.put("views/app/profile/profile.details.html", '<ion-view class="profile-details" view-title="Profile">\n  <div class="row profile-details-section">\n    <div class="col col-center col-25">\n      <!-- We need a wrapper with width set for the preload image directive -->\n      <div class="user-image-outer">\n        <pre-img ratio="_1_1" helper-class="rounded-image">\n          <img class="user-image" ng-src="{{user.picture}}" spinner-on-load>\n        </pre-img>\n      </div>\n    </div>\n    <div class="col col-center">\n      <div class="row user-details-top">\n        <div class="col user-detail-item">\n          <b class="item-count">{{user.posts.length}}</b>\n          <span class="item-name">posts</span>\n        </div>\n        <div class="col user-detail-item">\n          <a ui-sref="app.profile.followers({userId: currentUserId})">\n            <b class="item-count">{{user.followers.length}}</b>\n            <span class="item-name">followers</span>\n          </a>\n        </div>\n        <div class="col user-detail-item">\n          <a ui-sref="app.profile.following({userId: currentUserId})">\n            <b class="item-count">{{user.following.length}}</b>\n            <span class="item-name">following</span>\n          </a>\n        </div>\n      </div>\n      <div class="row user-details-bottom" ng-if="!myProfile">\n        <div class="col user-action-outer">\n          <a class="button button-small button-block button-outline">\n            <i class="icon ion-plus-round"></i> FOLLOW\n          </a>\n        </div>\n      </div>\n      <div class="row user-details-bottom" ng-if="myProfile">\n        <div class="col user-action-outer">\n          <a class="button button-small button-block button-outline" ui-sref="app.settings">\n            <i class="icon ion-gear-a"></i> SETTINGS\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class="row profile-details-section">\n    <div class="col user-info">\n      <h4 class="user-name">{{user.name.first}} {{user.name.last}}</h4>\n      <p class="user-description">\n        {{user.about}}\n      </p>\n      <p class="user-contact">\n        <a ng-controller="EmailComposerCtrl" ng-click="sendMail()">\n          <i class="icon ion-email"></i> {{user.email}}\n        </a>\n      </p>\n      <p class="user-site" dynamic-anchor-fix>\n        <a ng-href="{{user.website}}">{{user.website | cleanUrl}}</a>\n      </p>\n    </div>\n  </div>\n  <div class="row profile-details-section split-actions">\n    <div class="col user-interaction">\n      <a class="user-interaction-tab button button-clear button-block" ng-class="{active: (\'app.profile.posts\' | includedByState)}" nav-transition="none" ng-click="getUserPosts()" role="tab">\n        <i class="icon ion-document-text"></i> All Posts\n      </a>\n    </div>\n    <div class="col user-interaction">\n      <a class="user-interaction-tab button button-clear button-block" ng-class="{active: (\'app.profile.pics\' | includedByState)}" nav-transition="none" ng-click="getUserPics()" role="tab">\n        <i class="icon ion-images"></i> Pics\n      </a>\n    </div>\n  </div>\n  <ion-nav-view class="profile-sub-views-outer" name="profileSubContent"></ion-nav-view>\n</ion-view>\n'), 
         e.put("views/app/profile/profile.followers.html", '<ion-view class="profile-followers profile-sub-view" view-title="Followers">\n  <ion-list class="contacts-list" can-swipe="true" delegate-handle="followers-list">\n    <ion-item class="contact-item item-avatar" ng-repeat="follower in user.followers">\n      <div class="item-content-wrapper">\n        <div class="user-image-outer">\n          <pre-img ratio="_1_1" helper-class="square-image">\n            <img class="user-image" ng-src="{{follower.userData.picture}}" spinner-on-load>\n          </pre-img>\n        </div>\n        <div class="row contact-main first-row">\n          <div class="col col-67 contact-description">\n            <a class="username" ui-sref="app.profile.posts({userId: follower.userData.id})">{{follower.userData.username}}</a>\n            <span class="name">{{follower.userData.name.first}} {{follower.userData.name.last}}</span>\n          </div>\n          <div class="col contact-actions">\n            <button ng-if="follower.follow_back" class="action-button button button-outline active button-small button-block" trigger-unfollow>\n              Following\n            </button>\n            <button ng-if="!follower.follow_back" class="action-button button button-outline button-small button-block" ng-click="follow(contact)">\n              Follow\n            </button>\n          </div>\n        </div>\n        <div class="row contact-main">\n          <div class="col contact-description">\n            <p class="about-user">{{follower.userData.about}}</p>\n          </div>\n        </div>\n      </div>\n      <ion-option-button ng-if="follower.follow_back" class="unfollow-button" ng-click="remove(contact)">Unfollow</ion-option-button>\n    </ion-item>\n  </ion-list>\n</ion-view>\n'), 
         e.put("views/app/profile/profile.following.html", '<ion-view class="profile-following profile-sub-view" view-title="Following">\n  <ion-list class="contacts-list" can-swipe="true" delegate-handle="following-list">\n    <ion-item class="contact-item item-avatar" ng-repeat="following in user.following">\n      <div class="item-content-wrapper">\n        <div class="user-image-outer">\n          <pre-img ratio="_1_1" helper-class="square-image">\n            <img class="user-image" ng-src="{{following.userData.picture}}" spinner-on-load>\n          </pre-img>\n        </div>\n        <div class="row contact-main first-row">\n          <div class="col col-67 contact-description">\n            <a class="username" ui-sref="app.profile.posts({userId: following.userData.id})">{{following.userData.username}}</a>\n            <span class="name">{{following.userData.name.first}} {{following.userData.name.last}}</span>\n          </div>\n          <div class="col contact-actions">\n            <button class="action-button button button-outline active button-small button-block" trigger-unfollow>\n              Following\n            </button>\n          </div>\n        </div>\n        <div class="row contact-main">\n          <div class="col contact-description">\n            <p class="about-user">{{following.userData.about}}</p>\n          </div>\n        </div>\n      </div>\n      <ion-option-button class="unfollow-button" ng-click="remove(contact)">Unfollow</ion-option-button>\n    </ion-item>\n  </ion-list>\n</ion-view>\n'), 
