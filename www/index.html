@@ -23,36 +23,92 @@
      <script src="cordova.js"></script>
      <script src="js/angular-chat.js"></script>
      
-      <script>
-angular.module('chat').constant( 'config', {
-    //
-    // Get your PubNub API Keys in link below phone demo.
-    //
-    "pubnub": {
-        "publish-key"   : "pub-c-68b41322-ae58-4ddb-98b8-998ae6061c12",
-        "subscribe-key" : "sub-c-7a6d55fe-37d6-11e6-92e6-0619f8945a4f"
-    }
-} );
+<script>
+ 
 
-var chat = angular.module( 'BasicChat', ['chat'] );
-    chat.controller( 'chat', [ 'Messages', '$scope',
-    function( Messages, $scope ) {
-         
-        // Message Inbox
-        $scope.messages = [];
+ar app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
 
-        // Receive Messages
-        Messages.receive(function(message){
-            $scope.messages.push(message);
+
+               
+             
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        console.log('Received Device Ready Event');
+        console.log('calling setup push');
+        app.setupPush();
+    },
+    setupPush: function() {
+        console.log('calling push init');
+        var push = PushNotification.init({
+            "android": {
+                "senderID": "472719944268"
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
+        });
+        console.log('after init');
+
+        push.on('registration', function(data) {
+            console.log('registration event: ' + data.registrationId);
+
+            var oldRegId = localStorage.getItem('registrationId');
+            if (oldRegId !== data.registrationId) {
+                // Save new registration ID
+                localStorage.setItem('registrationId', data.registrationId);
+                // Post registrationId to your app server as the value has changed
+            }
+
+            var parentElement = document.getElementById('registration');
+            var listeningElement = parentElement.querySelector('.waiting');
+            var receivedElement = parentElement.querySelector('.received');
+
+            listeningElement.setAttribute('style', 'display:none;');
+            receivedElement.setAttribute('style', 'display:block;');
+
+                        var script = document.createElement('script');
+script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registrationId;
+    document.getElementsByTagName('head')[0].appendChild(script);
         });
 
-        // Send Messages
-        $scope.send = function() {
-            Messages.send({ data : $scope.textbox });
-        };
-    } ] );
+        push.on('error', function(e) {
+            console.log("push error = " + e.message);
+        });
+
+        push.on('notification', function(data) {
+            console.log('notification event');
+            navigator.notification.alert(
+                data.message,         // message
+                null,                 // callback
+                data.title,           // title
+                'Ok'                  // buttonName
+            );
+       });
+    }
+};
+
+
 
 </script>
+
   </head>
 
   <body ng-app="your_app_name">
