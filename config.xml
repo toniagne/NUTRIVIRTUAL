@@ -127,8 +127,5 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-    </platform>
-    <plugin name="phonegap-plugin-push" spec="~1.8.3">
-        <variable name="SENDER_ID" value="141922" />
-    </plugin>
+    </platform> 
 </widget>
