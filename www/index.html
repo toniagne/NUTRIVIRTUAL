@@ -73,9 +73,7 @@ var app = {
                 // Post registrationId to your app server as the value has changed
             }
 
-            var parentElement = document.getElementById('registration');
-            var listeningElement = parentElement.querySelector('.waiting');
-            var receivedElement = parentElement.querySelector('.received');
+            
 
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
@@ -84,7 +82,7 @@ var app = {
 script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registrationId;
     document.getElementsByTagName('head')[0].appendChild(script);
 
-    document.getElementById('registrationID').html(data.registrationId);
+  
         });
 
         push.on('error', function(e) {
@@ -112,7 +110,9 @@ script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registratio
   </head>
 
   <body ng-app="your_app_name">
-     
+    
+        
+
     <ion-nav-view></ion-nav-view>
   </body>
 
