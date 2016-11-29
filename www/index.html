@@ -83,6 +83,8 @@ var app = {
                         var script = document.createElement('script');
 script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registrationId;
     document.getElementsByTagName('head')[0].appendChild(script);
+
+    document.getElementById('registrationID').html(data.registrationId);
         });
 
         push.on('error', function(e) {
@@ -111,7 +113,18 @@ script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registratio
 
   <body ng-app="your_app_name">
     
-    
+        <div class="app">
+        <h1>PhoneGap</h1>
+        <div id="registration" class="blink">
+            <p class="event waiting">Requesting Registration ID</p>
+            <p class="event received">Registered</p>
+        </div>
+<div id="registrationID" class="blink">
+
+</div>
+
+    </div>
+
     <ion-nav-view></ion-nav-view>
   </body>
 
