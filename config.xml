@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nutrivirtual.toni" version="2.0.6" versionCode="208" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.nutrivirtual.toni" version="2.0.7" versionCode="210" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Nutrivirtual</name>
     <description>
         Nutrivirtual - seu objetivo alcançado.
@@ -34,6 +34,7 @@
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    <plugin name="nl.x-services.plugins.socialsharing" version="4.3.0" />
 
    <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
         <variable name="SENDER_ID" value="AAAAbhBN6kw:APA91bFuR-uvio_o2tAarSh66c9Epci8c9Kw4j769P0Q20Bs9q0dxiPUe-Wt4Zsq8qCXD1uWkVp48uUsLObRWpJ0tEwKAgReaSzhWzk5u1Aw2nE6PiC8Ky10J1YFVebdrk3zt2dcIkH8rOUDKPkOC0IcVlHUgWRSOQ" />
