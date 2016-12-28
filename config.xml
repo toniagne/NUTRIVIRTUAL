@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<widget id="com.nutrivirtual.toni" version="2.0.9" versionCode="215" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-=======
-<widget id="com.nutrivirtual.toni" version="2.0.10" versionCode="218" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
->>>>>>> origin/master
+
+<widget id="com.nutrivirtual.toni" version="2.0.11" versionCode="220" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+
     <name>Nutrivirtual</name>
     <description>
         Nutrivirtual - seu objetivo alcançado.
