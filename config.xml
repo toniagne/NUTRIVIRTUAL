@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-
-<widget id="com.nutrivirtual.toni" version="2.0.11" versionCode="220" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-
+<widget id="com.nutrivirtual.toni" version="2.0.11" versionCode="230" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Nutrivirtual</name>
     <description>
         Nutrivirtual - seu objetivo alcançado.
     </description>
-    <author email="toniagne@gmail.com" href="http://garagee.com.br">
+    <author email="toniagne@gmail.com" href="http://phonegap.com">
         Toni Agne
     </author>   
     <content src="index.html" />
