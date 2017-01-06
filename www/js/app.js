@@ -221,6 +221,10 @@ angular.module("underscore", []).factory("_", function() {
         url: "/submenus",
         templateUrl: "views/auth/submenus.html",
         controller: "WelcomeCtrl"
+    }).state("soucadastrado", {
+        url: "/soucadastrado",
+        templateUrl: "views/auth/soucadastrado.html",
+        controller: "WelcomeCtrl"
     }),
      n.otherwise("/facebook-sign-in")
 }]), angular.module("your_app_name.common.directives", []).directive("multiBg", ["_", function(e) {
@@ -397,7 +401,7 @@ angular.module("underscore", []).factory("_", function() {
     }
 }]), angular.module("your_app_name.auth.controllers", [])
 
-.controller("WelcomeCtrl", ["$scope", "$state", "$ionicModal", "$ionicPopup", "$ionicLoading", "$http", function(e, n, t) {
+.controller("WelcomeCtrl", ["$scope", "$state", "$ionicModal", "$ionicPopup", "ProfileService", "$ionicLoading", "$http", function(e, n, t, ProfileService, outro) {
     e.bgs = ["img/welcome-bg.jpg"], 
     e.facebookSignIn = function() {
         console.log("doing facebook sign in"), n.go("app.feed")
@@ -432,9 +436,40 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
         script.src = url;
         document.getElementsByTagName('head')[0].appendChild(script);
         e.error = "CADASTRO ENVIADO";
-        alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+        ProfileService.alert({ 
+                title:" Seu cadastro foi efetuado com sucesso !!"
+            });
+         n.go("soucadastrado");
         
-    },e.submit = function(contactform, formData) {
+    },e.souCadastrado = function(contactform, formData) {
+          
+          /*
+        var url = 'http://www.nutrivirtual.com.br/aplicativo/soucadastrado/?callback=JSON_CALLBACK&nome='+formData['nome']+'&estado='+formData['estado']+'&cidade='+formData['cidade']+'&email='+formData['email']+'&telefone='+formData['telefone']+'&whatsapp='+formData['whatsapp'];
+        var script = document.createElement('script');
+        script.src = url;
+        document.getElementsByTagName('head')[0].appendChild(script);
+        e.error = "CADASTRO ENVIADO";
+        alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+*/
+      var dadosUser = outro.verUserCadastrado(formData['email']);
+       dadosUser.then(function(successResponse){
+             
+          
+             if (successResponse.dadosUser.sucesso == 1){
+                n.go("submenus");
+            } else {    
+              ProfileService.alert({ 
+                title:" E-mail não existe, ou não esta habilitado.<br> Cadastre-se ou tente novamente."
+            });
+               
+            } 
+            
+
+            
+          });
+        
+    }
+    ,e.submit = function(contactform, formData) {
          console.log(formData);
      }
 
@@ -668,7 +703,16 @@ console.log(chat);
             });
             o.resolve(n)
         }), o.promise
-    }, this.getUserFollowers = function(t) {
+    }, this.verUserCadastrado = function(t) {
+        var o = n.defer();
+        return e.jsonp('http://www.nutrivirtual.com.br/aplicativo/soucadastrado/?callback=JSON_CALLBACK&email='+t).success(function(e) {
+          
+            o.resolve({ 
+                dadosUser: e
+            })
+        }), o.promise
+    },
+    this.getUserFollowers = function(t) {
         var o = n.defer();
         return e.jsonp("http://www.nutrivirtual.com.br/aplicativo/database/?callback=JSON_CALLBACK").success(function(e) {
             var n = _.filter(e.following, function(e) {
@@ -903,8 +947,9 @@ console.log(chat);
         e.put("views/auth/grupos.html", '<ion-view class="people-view" view-title="Loja Nutraceutica">\n <ion-content>\n\n <iframe ng-src="http://www.nutrivirtual.com.br/webroot/mensagens/index.php" style="width:100%; height: 450px"></iframe>\n </ion-content>\n </ion-view>\n'), 
         e.put("views/auth/evolucao.html", '<ion-view class="browse-view" view-title="a">\n <ion-content>\n <div class="list">\n <div class="item item-divider">\n <i class="icon ion-arrow-graph-up-right"></i> Evolução\n </div>\n </div>\n </ion-content>\n </ion-view>\n'), 
         e.put("views/auth/submenus.html", '<ion-view class="welcome-view" cache-view="false">\n <ion-nav-bar>\n <ion-nav-back-button>\n                </ion-nav-back-button>\n </ion-nav-bar>\n <ion-content scroll="false">\n <div multi-bg="bgs" interval="3000" helper-class="facebook-welcome-bg2">\n <Br> <div class="row"> <div class="col" align="center"> <a ui-sref="app.category_feed({ categoryId: 1})"> <img src="img/ic-receitas.png"> </a> </div> <div class="col" align="center"> <a ui-sref="app.category_feed({ categoryId: 2})"> <img src="img/ic-dicas.png"> </a> </div> </div> <div class="row"> <div class="col" align="center"> <a ui-sref="app.category_feed({ categoryId: 3})"> <img src="img/ic-curiosidades.png"> </a> </div> <div class="col" align="center"> <a ui-sref="app.category_feed({ categoryId: 4})"> <img src="img/ic-atividades.png"> </a> </div> </div> <div class="row"> <div class="col" align="center"> <a ui-sref="app.category_feed({ categoryId: 5 })"> <img src="img/ic-agua.png"> </a> </div> <div class="col" align="center"> <img src="img/ic-chat.png"> </div> </div> <div class="row"> <div class="col" align="center"> <img src="img/ic-msgdiaria.png"> </div> <div class="col" align="center"> <img src="img/ic-chatindividual.png"> </div> </div> </div>\n </ion-content>\n </ion-view>\n'), 
+        e.put("views/auth/soucadastrado.html", '<ion-view class="auth-view" cache-view="false">\n <ion-nav-bar class="view-navigation">\n <ion-nav-back-button>\n        </ion-nav-back-button>\n </ion-nav-bar>\n <ion-content class="padding">\n <div class="row form-heading">\n <div class="col">\n <h1 class="form-title">VOCÊ JÁ TEM CADASTRO ?</h1>\n Se você já tem cadastro é so entrar com seu e-mail.<br> <br>\n </div>\n </div>\n <div class="row form-separator">\n <hr class="separator-line"/>\n <span class="separator-mark"> <p ng-show="error" class="message error">{{error}}             </p>\n </span>\n <hr class="separator-line"/>\n </div>\n <div class="row form-wrapper">\n <div class="col">\n <form name="signup_form" class="" ng-submit="cadastrarse(contactform, formData)" novalidate>\n <div class="form-fields-outer list list-inset">\n <label class="item item-input">\n <input type="email" placeholder="Email" name="email" ng-model="formData.email" required>\n </label>\n <button type="submit" class="sign-up button button-block" ng-click="souCadastrado(contactform, formData)" ng-disabled="signup_form.$invalid">\n              Logue-se\n </button>\n <a class="facebook-sign-in button-large button button-block" ui-sref="dont-have-facebook">\n            Cadastrar-se \n                                        </a>\n </div>\n </form>\n </div>\n </div>\n </ion-content>\n </ion-view>\n'), 
         
-        e.put("views/auth/facebook-sign-in.html", '<ion-view class="welcome-view" cache-view="false">\n <ion-nav-bar>\n <ion-nav-back-button>\n                </ion-nav-back-button>\n </ion-nav-bar>\n <ion-content scroll="false">\n <div multi-bg="bgs" interval="3000" helper-class="facebook-welcome-bg">\n <div class="top-content row">\n <div class="app-copy col col-center">\n <img src="img/logo.png" style="top:-20px;">\n </div>\n </div>\n <div class="bottom-content row">\n <div class="col col-bottom">\n <a class="facebook-sign-in button-large button button-block" ng-click="showTerms()">\n            O que é ? \n                                        </a>  \n <a class="facebook-sign-in button-large button button-block" ui-sref="submenus">\n            Já sou cadastrado \n                                        </a>   \n \n <a class="facebook-sign-in button-large button button-block" ui-sref="dont-have-facebook">\n            Cadastrar-se \n                                        </a>\n <section ng-include="\'views/app/legal/legal-notice.html\'"></section>\n </div>\n </div>\n </div>\n </ion-content>\n </ion-view>\n'), 
+        e.put("views/auth/facebook-sign-in.html", '<ion-view class="welcome-view" cache-view="false">\n <ion-nav-bar>\n <ion-nav-back-button>\n                </ion-nav-back-button>\n </ion-nav-bar>\n <ion-content scroll="false">\n <div multi-bg="bgs" interval="3000" helper-class="facebook-welcome-bg">\n <div class="top-content row">\n <div class="app-copy col col-center">\n <img src="img/logo.png" style="top:-20px;">\n </div>\n </div>\n <div class="bottom-content row">\n <div class="col col-bottom">\n <a class="facebook-sign-in button-large button button-block" ng-click="showTerms()">\n            O que é ? \n                                        </a>  \n <a class="facebook-sign-in button-large button button-block" ui-sref="soucadastrado">\n            Já sou cadastrado \n                                        </a>   \n \n <a class="facebook-sign-in button-large button button-block" ui-sref="dont-have-facebook">\n            Cadastrar-se \n                                        </a>\n <section ng-include="\'views/app/legal/legal-notice.html\'"></section>\n </div>\n </div>\n </div>\n </ion-content>\n </ion-view>\n'), 
         e.put("views/auth/forgot-password.html", '<ion-modal-view class="auth-view modal-view">\n    <ion-header-bar>\n              <h1 class="title modal-title">Recover password</h1>\n           <a class="button button-clear" ng-click="forgot_password_modal.hide()">Cancel</a>\n     </ion-header-bar>\n     <ion-content class="padding">\n         <div class="row form-heading">\n      <div class="col">\n                               <h3 class="form-sub-title">Enter the email for your account</h3>\n                      </div>\n                </div>\n                <div class="row form-wrapper">\n      <div class="col">\n                               <form name="recover_password_form" class="" novalidate>\n                                       <div class="form-fields-outer list list-inset">\n                                               <label class="item item-input">\n                                                       <input type="email" placeholder="Email" name="email" ng-model="user.email" required>\n                                          </label>\n                                              <button type="submit" class="recover-password button button-block" ng-click="requestNewPassword()" ng-disabled="recover_password_form.$invalid">\n                                                      Recover\n                                               </button>\n                                             <p ng-show="error" class="message error">{{error}}</p>\n                                                <p ng-show="message" class="message">{{message}}</p>\n                                  </div>\n                                </form>\n                       </div>\n                </div>\n        </ion-content>\n</ion-modal-view>\n'), 
         e.put("views/auth/welcome-back.html", '<ion-view class="auth-view" cache-view="false">\n  <ion-nav-bar class="view-navigation">\n    <ion-nav-back-button>\n    </ion-nav-back-button>\n  </ion-nav-bar>\n  <ion-content class="padding">\n    <div class="row form-heading">\n      <div class="col">\n        <h1 class="form-title">Welcome back</h1>\n        <h3 class="form-sub-title">Login to your account to start</h3>\n        <div class="social-sign-up button-bar">\n          <a class="button icon ion-social-facebook button-positive"></a>\n          <a class="button icon ion-social-twitter button-calm"></a>\n        </div>\n      </div>\n    </div>\n    <div class="row form-separator">\n      <hr class="separator-line"/>\n      <span class="separator-mark">OR</span>\n      <hr class="separator-line"/>\n    </div>\n    <div class="row form-wrapper">\n      <div class="col">\n        <form name="login_form" class="" novalidate>\n          <div class="form-fields-outer list list-inset">\n            <label class="item item-input">\n              <input type="text" placeholder="Username" name="username" ng-model="user.userName" required>\n            </label>\n            <label class="item item-input" show-hide-container>\n              <input type="password" placeholder="Password" name="password" ng-model="user.password" required show-hide-input>\n            </label>\n            <button type="submit" class="login button button-block" ng-click="doLogIn()" ng-disabled="login_form.$invalid">\n              Login\n            </button>\n            <p ng-show="error" class="message error">{{error}}</p>\n          </div>\n        </form>\n        <div class="alternative-actions">\n          <a class="forgot-password button button-clear button-block" ng-click="showForgotPassword()">\n            Forgot your password?\n          </a>\n        </div>\n      </div>\n    </div>\n  </ion-content>\n</ion-view>\n'), 
         e.put("views/common/multi-bg.html", '<div class="multi-bg-outer" ng-class="{ \'finish-loading\': loaded }">\n       <img bg class="multi-bg {{ helperClass }}" ng-src="{{ bg_img }}"/>\n    <span class="bg-overlay"></span>\n      <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>\n <!-- <span ng-show="!loaded" class="spinner-on-load ion-load-c"></span> -->\n   <ng-transclude></ng-transclude>\n</div>\n'), 
