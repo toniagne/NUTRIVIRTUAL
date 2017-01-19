@@ -35,7 +35,14 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" /> 
 
- 
+    <feature name="SocialSharing">
+     <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+
+   <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
+        <variable name="SENDER_ID" value="AAAAbhBN6kw:APA91bFuR-uvio_o2tAarSh66c9Epci8c9Kw4j769P0Q20Bs9q0dxiPUe-Wt4Zsq8qCXD1uWkVp48uUsLObRWpJ0tEwKAgReaSzhWzk5u1Aw2nE6PiC8Ky10J1YFVebdrk3zt2dcIkH8rOUDKPkOC0IcVlHUgWRSOQ" />
+    </plugin>
+
     <icon src="icon.png" />
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
