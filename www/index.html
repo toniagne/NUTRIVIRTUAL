@@ -1,118 +1,24 @@
 <!DOCTYPE html>
 <html>
-  
-<!-- Mirrored from ion-social-app.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2016 01:38:09 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">
     <title></title>
-
-    <script>
-      window.MIXPANEL_CUSTOM_LIB_URL = 'js/dist-b.js';
-    </script>       
-    <script src="js/dist-a.js"></script>
-    <script src="js/dist-b.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://maps.google.com/maps/api/js?libraries=places"></script>
-    <script src="js/modules.js"></script>
-    <script src="js/dist-c.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/dist-d.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ion-md-input/css/ion-md-input.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="lib/ion-md-input/js/ion-md-input.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-    <script src="js/angular-chat.js"></script>
-    <script type="text/javascript" src="js/SocialSharing.js"></script>
-     
-<script>
- 
-
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents(); 
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
-        app.setupPush();
-    },
-    setupPush: function() {
-        console.log('calling push init');
-        var push = PushNotification.init({
-            "android": {
-                "senderID": "472719944268"
-            },
-            "browser": {},
-            "ios": {
-                "sound": true,
-                "vibration": true,
-                "badge": true
-            },
-            "windows": {}
-        });
-        console.log('after init');
-
-        push.on('registration', function(data) {
-            console.log('registration event: ' + data.registrationId);
-
-            var oldRegId = localStorage.getItem('registrationId');
-            if (oldRegId !== data.registrationId) {
-                // Save new registration ID
-                localStorage.setItem('registrationId', data.registrationId);
-                // Post registrationId to your app server as the value has changed
-            }
-
-             
- 
-
-                        var script = document.createElement('script');
-script.src = 'http://www.nutrivirtual.com.br/aplicativo/cadid/'+data.registrationId;
-    document.getElementsByTagName('head')[0].appendChild(script);
-
-   
-        });
-
-        push.on('error', function(e) {
-            console.log("push error = " + e.message);
-        });
-
-        push.on('notification', function(data) {
-            console.log('notification event');
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
-       });
-    }
-};
-
- app.initialize();
-
-
-
-</script>
-
-  </head>
-
-  <body ng-app="your_app_name">
-     
-
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body ng-app="starter">
     <ion-nav-view></ion-nav-view>
-  </body>
-
-<!-- Mirrored from ion-social-app.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2016 01:38:21 GMT -->
+</body>
 </html>

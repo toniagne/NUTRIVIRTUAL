@@ -1,0 +1,37 @@
+<ion-view view-title="Perfil">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up" style="background-image: url('img/profile-bg.jpg');">
+            <div class="content">
+                <div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>
+                <h3><a class="light">RECEITAS</a></h3>
+            </div>
+        </div>
+
+        <div class="tabs tabs-dark tabs-icon-top static">
+            <a ui-sref="app.profile" class="tab-item">
+                <i class="icon ion-android-document"></i> Curiosidades
+            </a>
+            <a ui-sref="app.friends" class="tab-item">
+                <i class="icon icon ion-star"></i> Área VIP
+            </a>
+            <a ui-sref="app.gallery" class="tab-item">
+                <i class="icon ion-images"></i> Receitas
+            </a>
+        </div>
+
+
+
+
+            <div class="list card" ng-repeat="itemE in itemsdireita" ui-sref="app.veritem({id: {{itemE.id}}})">
+              <div class="item">
+                <h2>{{itemE.titulo}}</h2>
+              </div>
+              <div class="item item-image">
+              <img class="full-image" src="{{itemE.picture}}">
+              </div>
+              <br>
+            </div>
+
+
+    </ion-content>
+</ion-view>

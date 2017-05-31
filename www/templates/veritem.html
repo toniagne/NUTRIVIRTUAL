@@ -1,0 +1,14 @@
+<ion-view view-title="Item">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+          <div class="list card" ng-repeat="itemE in itemsdireita">
+            <div class="item">
+              <h2>{{itemE.titulo}}</h2>
+            </div>
+            <div class="item item-image">
+            <img class="full-image" src="{{itemE.picture}}">
+            </div>
+            <p ng-bind-html="itemE.texto"></p>
+
+          </div>
+    </ion-content>
+</ion-view>
