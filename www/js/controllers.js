@@ -95,11 +95,25 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
-.controller('FriendsCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
+.controller('FriendsCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $http, $location) {
     // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
     $scope.$parent.setHeaderFab('left');
+
+    $scope.submitForm = function(formData) {
+
+      console.log(formData['nome']);
+     var url =  'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&cidade='+formData['cidade']+'&estado='+formData['estado']+'&email='+formData['email']+'&telefone='+formData['telefone'];
+      $http.jsonp(url).
+      success(function(data, status, headers, config) {
+        alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+        $location.path("/app/profile");
+      }).
+      error(function(data, status, headers, config) {
+        console.log('erro');
+      });
+    };
 
     // Delay expansion
     $timeout(function() {
@@ -114,9 +128,33 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
+.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http, $location) {
     // Set Header
+    $scope.submitForm = function(formData) {
 
+      console.log(formData['nome']);
+     var url =  'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&cidade='+formData['cidade']+'&estado='+formData['estado']+'&email='+formData['email']+'&telefone='+formData['telefone'];
+      $http.jsonp(url).
+      success(function(data, status, headers, config) {
+        alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+        $location.path("/app/profile");
+      }).
+      error(function(data, status, headers, config) {
+        console.log('erro');
+      });
+    };
+/*
+    function(contactform, formData) {
+          console.log('teste');
+        var url = 'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&estado='+formData['estado']+'&cidade='+formData['cidade']+'&email='+formData['email']+'&telefone='+formData['telefone']+'&acesso_30_reais='+formData['acesso_30_reais']+'&aceitacontrato='+formData['aceitacontrato']+'&reeducacao_alimentar='+formData['reeducacao_alimentar']+'&ganho_de_peso='+formData['ganho_de_peso']+'&emagrecimento='+formData['emagrecimento']+'&outros_interesses='+formData['...(line truncated)...
+        var script = document.createElement('script');
+        script.src = url;
+        document.getElementsByTagName('head')[0].appendChild(script);
+        e.error = "CADASTRO ENVIADO";
+alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+
+
+    }*/
 
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();

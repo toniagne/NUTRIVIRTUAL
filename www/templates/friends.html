@@ -5,16 +5,15 @@
               <div class="padding">
                 <p>Cadastre-se gratuítamente e faça parte de um grupo exclusivo de dietas e consultoria especializada da nutricionista.</p>
               </div>
-               <div class="list">
-                   <ion-md-input placeholder="Nome" highlight-color="balanced" type="text"></ion-md-input>
-                   <ion-md-input placeholder="E-mail" highlight-color="balanced" type="text"></ion-md-input>
-                   <ion-md-input placeholder="Telefone" highlight-color="balanced" type="text"></ion-md-input>
-                   <ion-md-input placeholder="Cidade/UF" highlight-color="balanced" type="text"></ion-md-input>
-
-               </div>
-               <div class="padding">
-                   <button ui-sref="app.cadastro" class="button button-full button-assertive ink">CADASTRAR-SE</button>
-               </div>
+              <div class="list">
+                  <ion-md-input ng-model="formData.nome" placeholder="Nome" highlight-color="energized" style="color:#ffffff" type="text"></ion-md-input>
+                  <ion-md-input ng-model="formData.email" placeholder="E-mail" highlight-color="balanced" type="text"></ion-md-input>
+                  <ion-md-input ng-model="formData.telefone" placeholder="Telefone" highlight-color="balanced" type="text"></ion-md-input>
+                  <ion-md-input ng-model="formData.cidade" placeholder="Cidade/UF" highlight-color="balanced" type="text"></ion-md-input>
+              </div>
+              <div class="padding">
+                  <button class="button button-full button-assertive ink" ng-click="submitForm(formData)">CADASTRAR-SE</button>
+              </div>
             </div>
         </div>
     </ion-content>
