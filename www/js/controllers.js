@@ -133,7 +133,7 @@ angular.module('starter.controllers', [])
     $scope.submitForm = function(formData) {
 
       console.log(formData['nome']);
-     var url =  'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&cidade='+formData['cidade']+'&estado='+formData['estado']+'&email='+formData['email']+'&telefone='+formData['telefone'];
+     var url =  'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&cidade='+formData['cidade']+'&estado='+formData['estado']+'&email='+formData['email']+'&telefone='+formData['telefone']+'&whatsapp='+formData['whatsapp'];
       $http.jsonp(url).
       success(function(data, status, headers, config) {
         alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
@@ -177,8 +177,8 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
 
     // Set Ink
     ionicMaterialInk.displayEffect();
-    var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=1";
-    var url2 = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=3";
+    var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2";
+    var url2 = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2";
     $http.jsonp(url).
     success(function(data, status, headers, config) {
       $scope.itemsdireita = data;
@@ -267,7 +267,7 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
   }, 500);
 
 
-    var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2";
+    var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=1";
     $http.jsonp(url).
     success(function(data, status, headers, config) {
       $scope.itemsdireita = data;
