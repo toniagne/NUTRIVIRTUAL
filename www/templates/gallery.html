@@ -22,15 +22,17 @@
 
 
 
-            <div class="list card" ng-repeat="itemE in itemsdireita" ui-sref="app.veritem({id: {{itemE.id}}})">
+            <a class="list card" ng-repeat="itemE in itemsdireita" ui-sref="app.veritem({id: {{itemE.id}}})">
               <div class="item">
-                <h2>{{itemE.titulo}}</h2>
+                <button class="button button-full button-assertive" ng-click="app.veritem({id: {{itemE.id}}})">
+                {{itemE.titulo}}
+                </button>
               </div>
               <div class="item item-image">
               <img class="full-image" src="{{itemE.picture}}">
               </div>
               <br>
-            </div>
+            </a>
 
 
     </ion-content>

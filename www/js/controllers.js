@@ -141,15 +141,23 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http, $location) {
+.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http, $location, $ionicLoading) {
     // Set Header
-    $scope.submitForm = function(formData) {
 
+    $scope.submitForm = function(formData) {
+      $ionicLoading.show({
+        content: 'Enviando contato...',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
       console.log(formData['nome']);
      var url =  'http://www.nutrivirtual.com.br/aplicativo/cadastro/?callback=JSON_CALLBACK&nome='+formData['nome']+'&cidade='+formData['cidade']+'&estado='+formData['estado']+'&email='+formData['email']+'&telefone='+formData['telefone']+'&whatsapp='+formData['whatsapp'];
       $http.jsonp(url).
       success(function(data, status, headers, config) {
         alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
+        $ionicLoading.hide();
         $location.path("/app/profile");
       }).
       error(function(data, status, headers, config) {
@@ -188,12 +196,20 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
         });
     }, 700);
 
+    $ionicLoading.show({
+      content: 'Enviando contato...',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
     // Set Ink
     ionicMaterialInk.displayEffect();
     var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2";
     var url2 = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=2";
     $http.jsonp(url).
     success(function(data, status, headers, config) {
+      $ionicLoading.hide();
       $scope.itemsdireita = data;
     }).
     error(function(data, status, headers, config) {
@@ -202,6 +218,7 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
 
     $http.jsonp(url2).
     success(function(data, status, headers, config) {
+      $ionicLoading.hide();
       $scope.itemsEsquerda = data;
     }).
     error(function(data, status, headers, config) {
@@ -209,7 +226,7 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
     });
 })
 
-.controller('VerDetalhes', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
+.controller('VerDetalhes', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http, $ionicLoading) {
   $scope.$parent.showHeader();
   $scope.$parent.clearFabs();
   $scope.isExpanded = false;
@@ -229,12 +246,20 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
   }, 700);
 
 
+    $ionicLoading.show({
+      content: 'Enviando contato...',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
 
     var url = "http://www.nutrivirtual.com.br/aplicativo/veritem/?callback=JSON_CALLBACK&codigo="+$stateParams.id;
     $http.jsonp(url).
     success(function(data, status, headers, config) {
+      $ionicLoading.hide();
       $scope.itemsdireita = data;
-      console.log(data);
+
     }).
     error(function(data, status, headers, config) {
       console.log('erro');
@@ -259,7 +284,7 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
     ionicMaterialInk.displayEffect();
 })
 
-.controller('GalleryCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $http) {
+.controller('GalleryCtrl', function($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $http, $ionicLoading) {
   $scope.$parent.showHeader();
   $scope.$parent.clearFabs();
   $scope.isExpanded = false;
@@ -278,11 +303,18 @@ alert('SEU CADASTRO FOI ENVIADO COM SUCESSO !');
           startVelocity: 3000
       });
   }, 500);
-
+  $ionicLoading.show({
+    content: 'Enviando contato...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
 
     var url = "http://www.nutrivirtual.com.br/aplicativo/mensagens/?callback=JSON_CALLBACK&categoria=1";
     $http.jsonp(url).
     success(function(data, status, headers, config) {
+      $ionicLoading.hide();
       $scope.itemsdireita = data;
     }).
     error(function(data, status, headers, config) {
