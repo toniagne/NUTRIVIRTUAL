@@ -22,7 +22,7 @@
 
 
 
-            <a class="list card" ng-repeat="itemE in itemsdireita" ui-sref="app.veritem({id: {{itemE.id}}})">
+            <div class="list card" ng-repeat="itemE in itemsdireita" ui-sref="app.veritem({id: {{itemE.id}}})">
               <div class="item">
                 <button class="button button-full button-assertive" ng-click="app.veritem({id: {{itemE.id}}})">
                 {{itemE.titulo}}
@@ -33,7 +33,7 @@
               </div>
               <br>
               <p ng-bind-html="itemE.texto"></p>
-            </a>
+            </div>
 
 
     </ion-content>
